@@ -4,11 +4,13 @@ specifiers:
   '@astrojs/tailwind': ^3.1.1
   astro: ^2.1.8
   tailwindcss: ^3.3.0
+  zod: ^3.21.4
 
 dependencies:
   '@astrojs/tailwind': 3.1.1_pr2kzjolvxvlrb4p5jat5yxnoe
   astro: 2.1.8
   tailwindcss: 3.3.0
+  zod: 3.21.4
 
 packages:
 
