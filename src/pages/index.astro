@@ -1,4 +1,9 @@
 ---
+import { getAllPokemons } from "../lib/pokemon";
+import type { Pokemon } from "../lib/types";
+import Card from "../components/card.astro";
+
+const pokemons: Pokemon[] = await getAllPokemons();
 ---
 
 <html lang="en">
@@ -7,9 +12,16 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Pokemon</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Pokemon</h1>
+		<div class="grid grid-cols-6">
+			{
+				pokemons.map((pokemon) => (
+					<Card name={pokemon.name} sprites={pokemon.sprites} />
+				))
+			}
+		</div>
 	</body>
 </html>
