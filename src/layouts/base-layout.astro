@@ -1,0 +1,29 @@
+---
+import Hero from "../components/hero.astro";
+import "../styles/master.css";
+---
+
+<html lang="en" class="h-full bg-zinc-800">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon-96.png" />
+        <meta name="viewport" content="width=device-width=1.0" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Pokémon Database</title>
+    </head>
+    <body class="h-full">
+        <Hero />
+        <main class="container mx-auto -my-44 md:-my-64">
+            <h1
+                class="px-4 relative z-[9999] font-mono font-bold text-6xl text-white"
+            >
+                Pokémon
+            </h1>
+            <div
+                class="p-4 relative bg-gradient-to-tr from-neutral-950 to-zinc-800 text-white z-[9999] rounded-lg shadow-2xl shadow-black box"
+            >
+                <slot />
+            </div>
+        </main>
+    </body>
+</html>
