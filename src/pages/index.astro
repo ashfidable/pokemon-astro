@@ -1,27 +1,14 @@
 ---
 import { getAllPokemons } from "../lib/pokemon";
 import type { Pokemon } from "../lib/types";
-import Card from "../components/card.astro";
+import BaseLayout from "../layouts/base-layout.astro";
+import SearchSection from "../components/search-section.svelte";
 
 const pokemons: Pokemon[] = await getAllPokemons();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Pokemon</title>
-	</head>
-	<body>
-		<h1>Pokemon</h1>
-		<div class="grid grid-cols-6">
-			{
-				pokemons.map((pokemon) => (
-					<Card name={pokemon.name} sprites={pokemon.sprites} />
-				))
-			}
-		</div>
-	</body>
-</html>
+<BaseLayout>
+	<div class="mt-12">
+		<SearchSection pokemons={pokemons} client:idle />
+	</div>
+</BaseLayout>
