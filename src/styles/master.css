@@ -1,0 +1,92 @@
+@tailwind base;
+
+[data-poketype="normal"] {
+    --primary-color: theme(colors.slate.200);
+    --secondary-color: theme(colors.slate.100)
+}
+
+[data-poketype="fire"] {
+    --primary-color: theme(colors.orange.500);
+    --secondary-color: theme(colors.orange.400)
+}
+
+[data-poketype="water"] {
+    --primary-color: theme(colors.sky.500);
+    --secondary-color: theme(colors.sky.400)
+}
+
+[data-poketype="grass"] {
+    --primary-color: theme(colors.green.500);
+    --secondary-color: theme(colors.green.400)
+}
+
+[data-poketype="electric"] {
+    --primary-color: theme(colors.yellow.500);
+    --secondary-color: theme(colors.yellow.400)
+}
+
+[data-poketype="ice"] {
+    --primary-color: theme(colors.blue.400);
+    --secondary-color: theme(colors.blue.300)
+}
+
+[data-poketype="fighting"] {
+    --primary-color: theme(colors.red.500);
+    --secondary-color: theme(colors.red.400)
+}
+
+[data-poketype="poison"] {
+    --primary-color: theme(colors.purple.600);
+    --secondary-color: theme(colors.purple.500)
+}
+
+[data-poketype="ground"] {
+    --primary-color: theme(colors.orange.300);
+    --secondary-color: theme(colors.orange.200)
+}
+
+[data-poketype="flying"] {
+    --primary-color: theme(colors.purple.400);
+    --secondary-color: theme(colors.purple.300)
+}
+
+
+[data-poketype="psychic"] {
+    --primary-color: theme(colors.pink.500);
+    --secondary-color: theme(colors.pink.400)
+}
+
+[data-poketype="bug"] {
+    --primary-color: theme(colors.lime.500);
+    --secondary-color: theme(colors.lime.400)
+}
+
+[data-poketype="rock"] {
+    --primary-color: theme(colors.yellow.800);
+    --secondary-color: theme(colors.yellow.700)
+}
+
+[data-poketype="ghost"] {
+    --primary-color: theme(colors.indigo.600);
+    --secondary-color: theme(colors.indigo.500)
+}
+
+[data-poketype="dark"] {
+    --primary-color: theme(colors.stone.800);
+    --secondary-color: theme(colors.stone.700)
+}
+
+[data-poketype="dragon"] {
+    --primary-color: theme(colors.violet.600);
+    --secondary-color: theme(colors.violet.500)
+}
+
+[data-poketype="steel"] {
+    --primary-color: theme(colors.gray.500);
+    --secondary-color: theme(colors.gray.400)
+}
+
+[data-poketype="fairy"] {
+    --primary-color: theme(colors.pink.300);
+    --secondary-color: theme(colors.pink.200)
+}
