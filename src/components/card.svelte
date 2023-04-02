@@ -1,33 +1,6 @@
 <script lang="ts">
     import type { Pokemon } from "../lib/types";
-    import Dark from "./icons/dark.svelte";
-    import Electric from "./icons/electric.svelte";
-    import Fairy from "./icons/fairy.svelte";
-    import Fighting from "./icons/fighting.svelte";
-    import Ground from "./icons/ground.svelte";
-    import Ice from "./icons/ice.svelte";
-    import Normal from "./icons/normal.svelte";
-    import Poison from "./icons/poison.svelte";
-    import Psychic from "./icons/psychic.svelte";
-    import Rock from "./icons/rock.svelte";
-    import Steel from "./icons/steel.svelte";
-    import Water from "./icons/water.svelte";
     export let pokemon: Pokemon;
-
-    const types: { [name: string]: any } = {
-        dark: Dark,
-        electric: Electric,
-        fairy: Fairy,
-        fighting: Fighting,
-        ground: Ground,
-        ice: Ice,
-        normal: Normal,
-        poison: Poison,
-        psychic: Psychic,
-        rock: Rock,
-        steel: Steel,
-        water: Water,
-    };
 </script>
 
 <div
