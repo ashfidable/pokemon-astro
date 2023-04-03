@@ -6,7 +6,6 @@
 
     import { flip } from "svelte/animate";
     import { fade, slide } from "svelte/transition";
-    import { linear } from "svelte/easing";
     import Search from "./icons/search.svelte";
 
     export let pokemons: Pokemon[];
@@ -31,18 +30,17 @@
     function filter(tag: string) {
         if (tag === "") {
             filterTags = [];
-            searchText = "";
             return;
         }
 
-        if (!filterTags.includes(tag)) {
-            filterTags = [...filterTags, tag];
-        } else {
-            if (filterTags.length === 1) {
-                filterTags = [];
-            }
-            filterTags = filterTags.filter((fTag) => fTag !== tag);
-        }
+        // if (!filterTags.includes(tag)) {
+        //     filterTags = [...filterTags, tag];
+        // } else {
+        //     if (filterTags.length === 1) {
+        //         filterTags = [];
+        //     }
+        //     filterTags = filterTags.filter((fTag) => fTag !== tag);
+        // }
     }
 
     function changeFilterState() {
@@ -51,49 +49,60 @@
 </script>
 
 <div class="flex flex-col items-center gap-2 mb-4 ">
-    <div class="flex items-center w-full justify-between">
-        <!-- <Search width={32} height={32} /> -->
-        <input
-            placeholder="Search using name. Example - pikachu"
-            class="flex-grow md:flex-grow-[0.3] outline-none focus:flex-grow p-2 text-white  bg-neutral-800 transition-all duration-75 ease-linear peer placeholder:italic "
-            bind:value={searchText}
-        />
+    <!-- Search Component -->
+    <div class="flex items-center w-full">
+        <div class="flex flex-row-reverse items-center flex-grow">
+            <input
+                id="search"
+                placeholder="Search using name. Example - pikachu"
+                class="flex-grow p-2 text-white transition-all duration-75 ease-linear outline-none md:flex-grow focus:flex-grow bg-neutral-800 peer placeholder:italic focus:bg-neutral-700"
+                bind:value={searchText}
+            />
+            <label
+                for="search"
+                class="p-1 transition-transform bg-neutral-800 peer-focus:scale-110 peer-focus:outline peer-focus:outline-1 peer-focus:outline-neutral-700"
+            >
+                <Search width={32} height={32} />
+            </label>
+        </div>
 
         <button
-            class="bg-neutral-800 hover:bg-neutral-700 p-1"
+            class="p-1 bg-neutral-800 hover:bg-neutral-700"
             on:click={changeFilterState}
         >
             <Filter width={32} height={32} />
         </button>
     </div>
 
+    <!-- If ShowFilter is true, it shows all the filter tags -->
     {#if showFilter}
-        <div
-            transition:slide|local={{ easing: linear, duration: 150 }}
-            class="grid grid-flow-col gap-2 grid-rows-3"
-        >
-            <button
-                class="p-2 text-black bg-white rounded-md hover:bg-neutral-900 hover:text-white transition-colors duration-150 ease-in-out"
-                transition:fade
-                on:click={() => filter("")}>ALL</button
-            >
+        <ul transition:slide|local class="flex flex-wrap gap-2">
             {#each pokemonTypes as type}
-                <button
-                    class="p-2 flex  gap-2 text-black bg-white rounded-md hover:bg-neutral-900 hover:text-white transition-colors duration-150 ease-in-out"
-                    transition:fade
-                    on:click={() => filter(type)}
-                >
-                    <img
-                        src={`${
-                            import.meta.env.BASE_URL
-                        }/images/icons/${type}.png`}
-                        alt={type}
-                        class="w-6 h-6"
+                <li>
+                    <input
+                        type="checkbox"
+                        bind:group={filterTags}
+                        id={type}
+                        name={type}
+                        value={type}
+                        class="sr-only peer"
                     />
-                    <span>{type}</span>
-                </button>
+                    <label
+                        for={type}
+                        class="flex gap-2 p-2 font-mono text-black uppercase transition-colors duration-150 ease-in-out bg-white rounded-md cursor-pointer outline outline-2 outline-black hover:bg-neutral-700 hover:text-white peer-checked:bg-neutral-900 peer-checked:text-white peer-checked:outline-white peer-checked:font-bold"
+                    >
+                        <img
+                            src={`${
+                                import.meta.env.BASE_URL
+                            }/images/icons/${type}.png`}
+                            alt={type}
+                            class="w-6 h-6"
+                        />
+                        {type}
+                    </label>
+                </li>
             {/each}
-        </div>
+        </ul>
     {/if}
 </div>
 
