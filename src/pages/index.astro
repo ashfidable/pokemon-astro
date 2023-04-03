@@ -17,6 +17,7 @@ pokemons = await Promise.all(
 			alt: "Hero",
 			width: 190,
 			height: 190,
+			format: "webp",
 		});
 		pokemon.sprites.other["official-artwork"].front_default = src;
 		return pokemon;
@@ -26,6 +27,6 @@ pokemons = await Promise.all(
 
 <BaseLayout>
 	<div class="mt-12">
-		<SearchSection pokemons={pokemons} client:idle />
+		<SearchSection pokemons={pokemons} client:load />
 	</div>
 </BaseLayout>

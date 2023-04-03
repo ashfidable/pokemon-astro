@@ -17,7 +17,7 @@
         height="190"
         alt={pokemon.name}
         loading="lazy"
-        decoding="async"
+        decoding="sync"
     />
 
     <ul class="flex gap-2">
