@@ -3,11 +3,10 @@ import { getAllPokemons } from "../lib/pokemon";
 import type { Pokemon } from "../lib/types";
 import BaseLayout from "../layouts/base-layout.astro";
 import SearchSection from "../components/search-section.svelte";
-import { Image } from "@astrojs/image/components";
 import { getImage } from "@astrojs/image";
+import Test from "../components/test.svelte";
 
 let pokemons: Pokemon[] = await getAllPokemons();
-const pokemon = pokemons[0].sprites.other["official-artwork"].front_default;
 
 pokemons = await Promise.all(
 	pokemons.map(async (pokemon) => {
@@ -27,6 +26,7 @@ pokemons = await Promise.all(
 
 <BaseLayout>
 	<div class="mt-12">
+		<!-- <Test pokemons={pokemons} client:load /> -->
 		<SearchSection pokemons={pokemons} client:load />
 	</div>
 </BaseLayout>
