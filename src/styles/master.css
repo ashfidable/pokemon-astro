@@ -106,3 +106,24 @@
     -webkit-mask: var(--mask);
     mask: var(--mask);
 }
+
+body {
+    scrollbar-gutter: stable;
+}
+
+body::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: theme(colors.neutral.900);
+}
+
+body::-webkit-scrollbar-thumb {
+
+    background: conic-gradient(at left center, rgb(244, 63, 94), rgb(67, 56, 202));
+}
+
+body::-webkit-scrollbar-button {
+    display: none;
+}
