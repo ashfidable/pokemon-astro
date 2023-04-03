@@ -13,6 +13,8 @@
     <img
         src={pokemon.sprites.other["official-artwork"].front_default}
         class="z-10"
+        width="190"
+        height="190"
         alt={pokemon.name}
     />
 
