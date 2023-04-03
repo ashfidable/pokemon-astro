@@ -16,7 +16,7 @@ const { src } = await getImage({
 	height: 190,
 });
 
-let test = src;
+let test = src.replace(/_[^.]*\./, ".");
 ---
 
 <BaseLayout>
