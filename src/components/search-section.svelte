@@ -21,7 +21,9 @@
             pokemon.types.some((type) => type.type.name === tag)
         );
 
-        const nameMatch = pokemon.name.toLowerCase().includes(searchText);
+        const nameMatch = pokemon.name
+            .toLowerCase()
+            .includes(searchText.toLowerCase());
 
         return tagsMatch && nameMatch;
     });
