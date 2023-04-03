@@ -3,11 +3,24 @@ import { getAllPokemons } from "../lib/pokemon";
 import type { Pokemon } from "../lib/types";
 import BaseLayout from "../layouts/base-layout.astro";
 import SearchSection from "../components/search-section.svelte";
+import { Image } from "@astrojs/image/components";
+import { getImage } from "@astrojs/image";
 
 const pokemons: Pokemon[] = await getAllPokemons();
+const pokemon = pokemons[0].sprites.other["official-artwork"].front_default;
+
+const { src } = await getImage({
+	src: pokemon,
+	alt: "Hero",
+	width: 190,
+	height: 190,
+});
+
+let test = src;
 ---
 
 <BaseLayout>
+	<Image src={test} alt="poke" width={190} height={190} />
 	<div class="mt-12">
 		<SearchSection pokemons={pokemons} client:idle />
 	</div>

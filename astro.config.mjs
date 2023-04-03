@@ -8,5 +8,7 @@ import image from "@astrojs/image";
 export default defineConfig({
   site: 'https://ashfidable.github.io',
   base: '/pokemon-astro',
-  integrations: [tailwind(), svelte(), image()]
+  integrations: [tailwind(), svelte(), image(
+    { serviceEntryPoint: '@astrojs/image/sharp' }
+  )]
 });

@@ -17,7 +17,7 @@ export async function getPokemonByName(name: string): Promise<Pokemon | ZodError
 }
 
 export async function getAllPokemons(): Promise<Pokemon[] | []> {
-    const request = await fetch(`${API}?limit=151`)
+    const request = await fetch(`${API}?limit=900`)
     const json = await request.json()
     const parsedResults = AllPokemonSchema.parse(json);
 
