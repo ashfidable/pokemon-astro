@@ -1,0 +1,79 @@
+---
+import BaseLayout from "../../layouts/base-layout.astro";
+import { getAllPokemons } from "../../lib/pokemon";
+import { pokemonTypes } from "../../lib/pokemon-type";
+import type { Pokemon } from "../../lib/types";
+
+export async function getStaticPaths() {
+    const pokemons = await getAllPokemons();
+
+    return pokemons.map((pokemon) => {
+        return {
+            params: { slug: pokemon.name },
+            props: pokemon,
+        };
+    });
+}
+
+const { id, sprites, types, stats, name } = Astro.props as Pokemon;
+---
+
+<BaseLayout title={name.toUpperCase()}>
+    <div data-poketype={types[0].type.name}>
+        <div
+            class="bg-gradient-to-tr from-[var(--primary-color)] to-[var(--secondary-color)] flex flex-col"
+        >
+            <img
+                src={sprites.other["official-artwork"].front_default}
+                width={190 * 2}
+                height={190 * 2}
+                class="self-center"
+            />
+        </div>
+        <!-- Title -->
+        <section>
+            <h2
+                class="transparent-fill-text text-4xl bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] font-bold text-center"
+            >
+                {name.toUpperCase()}
+            </h2>
+        </section>
+        <!-- Stats -->
+        <section>
+            <h6 class="text-2xl font-mono font-bold">Stats</h6>
+            <ul class="space-y-4">
+                {
+                    stats.map((stat) => {
+                        const sanitizedStatName = stat.stat.name.replace(
+                            "-",
+                            " "
+                        );
+                        return (
+                            <li class="space-y-2">
+                                <span class="uppercase font-bold">
+                                    {sanitizedStatName}
+                                </span>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5 ">
+                                    <div
+                                        class="bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color)] h-2.5 rounded-lg"
+                                        style={`width: ${
+                                            (stat.base_stat / 120) * 100
+                                        }%`}
+                                    />
+                                </div>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </section>
+    </div>
+</BaseLayout>
+
+<style>
+    .transparent-fill-text {
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>
