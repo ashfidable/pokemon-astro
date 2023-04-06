@@ -1,6 +1,5 @@
 <script lang="ts">
     export let tags: string[];
-
     import { slide } from "svelte/transition";
     import { pokemonTypes } from "../lib/pokemon-type";
 </script>
