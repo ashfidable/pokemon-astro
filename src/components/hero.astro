@@ -1,7 +1,16 @@
+---
+import { Image } from "@astrojs/image/components";
+---
+
 <div>
-    <img
+    <Image
         src={`${import.meta.env.BASE_URL}/images/banner.jpg`}
         alt="banner"
-        class="object-cover object-top w-full transition-all duration-300 ease-linear shadow-2xl opacity-80 wavy shadow-white h-96 aspect-video hover:object-center -scale-x-[1]"
+        width={1080}
+        height={500}
+        aspectRatio="16:9"
+        format="webp"
+        quality={60}
+        class="object-cover object-tio w-full transition-all duration-300 ease-linear shadow-2xl opacity-80 wavy shadow-white h-96 aspect-video hover:object-bottom -scale-x-[1]"
     />
 </div>
