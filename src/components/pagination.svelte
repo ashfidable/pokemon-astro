@@ -1,7 +1,8 @@
 <script>
     import Card from "./card.svelte";
     import { flip } from "svelte/animate";
-
+    import { fade, fly } from "svelte/transition";
+    import { cubicInOut, elasticInOut } from "svelte/easing";
     export let items = [];
     export let tags = [];
     export let pageSize = 10;
@@ -45,8 +46,13 @@
     <div class="flex gap-4">
         {#if currentPage > 1}
             <button
-                class="p-2 font-mono font-bold text-black rounded-lg"
+                class="bg-teal-400 hover:bg-teal-300 transition-colors duration-150 ease-in-out p-2 font-mono font-bold text-black rounded-lg"
                 on:click={() => handlePageChange(currentPage - 1)}
+                transition:fly={{
+                    x: -100,
+                    duration: 150,
+                    easing: elasticInOut,
+                }}
             >
                 Previous
             </button>
@@ -54,7 +60,7 @@
 
         {#if currentPage < totalPages}
             <button
-                class="p-2 font-mono font-bold text-black rounded-lg"
+                class="bg-teal-400 hover:bg-teal-300 transition-colors duration-150 ease-in-out p-2 font-mono font-bold text-black rounded-lg ml-auto"
                 on:click={() => handlePageChange(currentPage + 1)}
             >
                 Next
@@ -70,18 +76,3 @@
         {/each}
     </div>
 </div>
-
-<style>
-    button {
-        background: linear-gradient(
-            to right,
-            rgb(96, 165, 250),
-            rgb(52, 211, 153)
-        );
-        background-size: 150%;
-    }
-
-    button:hover {
-        animation: gradient 2s ease infinite forwards;
-    }
-</style>
