@@ -23,13 +23,15 @@
 
     <ul class="flex gap-2">
         {#each pokemon.types as pokeType}
-            <img
-                src={`${import.meta.env.BASE_URL}/images/icons/${
-                    pokeType.type.name
-                }.png`}
-                alt={pokeType.type.name}
-                class="w-8 h-8"
-            />
+            <li>
+                <img
+                    src={`${import.meta.env.BASE_URL}/images/icons/${
+                        pokeType.type.name
+                    }.png`}
+                    alt={pokeType.type.name}
+                    class="w-8 h-8"
+                />
+            </li>
         {/each}
     </ul>
 </a>
