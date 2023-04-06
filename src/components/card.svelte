@@ -3,7 +3,8 @@
     export let pokemon: Pokemon;
 </script>
 
-<div
+<a
+    href={`${import.meta.env.BASE_URL}pokemon/${pokemon.name}`}
     data-poketype={pokemon.types[0].type.name}
     class="relative p-2 rounded-lg bg-gradient-to-tr from-[var(--primary-color)] to-[var(--secondary-color)] flex flex-col items-center overflow-hidden isolate group"
 >
@@ -31,7 +32,7 @@
             />
         {/each}
     </ul>
-</div>
-<h4 class="z-10 p-2 font-bold uppercase ">
+</a>
+<h4 class="z-10 p-2 font-bold uppercase">
     {pokemon.name}
 </h4>
