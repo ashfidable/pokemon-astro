@@ -32,7 +32,7 @@ const { title = "Pokémon" } = Astro.props;
             <div
                 class="p-4 relative bg-gradient-to-tr from-neutral-950 to-neutral-900 text-white z-[9999] rounded-lg shadow-2xl shadow-black"
             >
-                <div class=""><slot /></div>
+                <div id="swup" class="swup-transition-fade"><slot /></div>
             </div>
         </main>
     </body>
