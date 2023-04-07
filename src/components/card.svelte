@@ -1,9 +1,15 @@
 <script lang="ts">
+    import { onMount } from "svelte";
     import type { Pokemon } from "../lib/types";
     export let pokemon: Pokemon;
+
+    onMount(async () => {
+        var promise = await import("../../scripts/router");
+    });
 </script>
 
 <a
+    data-swup-preload
     href={`${import.meta.env.BASE_URL}pokemon/${pokemon.name}`}
     data-poketype={pokemon.types[0].type.name}
     class="relative p-2 rounded-lg bg-gradient-to-tr from-[var(--primary-color)] to-[var(--secondary-color)] flex flex-col items-center overflow-hidden isolate group"

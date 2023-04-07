@@ -160,3 +160,16 @@ body::-webkit-scrollbar-button {
         background-position: 0% 50%;
     }
 }
+
+.swup-transition-fade {
+    transition: 0.4s;
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1)
+}
+
+html.is-animating .swup-transition-fade {
+    opacity: 0;
+    filter: blur(20rem);
+    transform: scale(1.1)
+}
